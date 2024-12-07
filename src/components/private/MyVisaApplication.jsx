@@ -45,7 +45,7 @@ const MyVisaApplications = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100"> {/* Center the container */}
+    <div className="min-h-screen flex justify-center items-center bg-gray-100"> 
       <div className="w-full max-w-7xl p-6">
         {Array.isArray(applications) && applications.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
