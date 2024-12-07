@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Home = () => {
@@ -42,7 +42,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center gap-8">
-     
       <div className="relative w-full overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-1000 ease-in-out"
@@ -61,9 +60,10 @@ const Home = () => {
         </div>
       </div>
 
-      
       <div className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">All Visas</h1>
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+          All Visas
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visas.map((visa) => (
             <div
@@ -76,15 +76,22 @@ const Home = () => {
                 className="w-full h-48 object-cover"
               />
               <div className="px-6 py-4">
-                <h3 className="text-xl font-semibold text-gray-700">{visa.country}</h3>
-                <p className="text-gray-600 mt-2">Visa Type: {visa.visa_type}</p>
-                <p className="text-gray-600 mt-1">Processing Time: {visa.processing_time}</p>
+                <h3 className="text-xl font-semibold text-gray-700">
+                  {visa.country}
+                </h3>
+                <p className="text-gray-600 mt-2">
+                  Visa Type: {visa.visa_type}
+                </p>
+                <p className="text-gray-600 mt-1">
+                  Processing Time: {visa.processing_time}
+                </p>
                 <p className="text-gray-600 mt-1">Fee: ${visa.fee}</p>
                 <p className="text-gray-600 mt-1">Validity: {visa.validity}</p>
-                <p className="text-gray-600 mt-1">Application Method: {visa.application_method}</p>
+                <p className="text-gray-600 mt-1">
+                  Application Method: {visa.application_method}
+                </p>
               </div>
               <div className="px-6 py-4">
-                
                 <Link
                   to={`/visa-details/${visa._id}`}
                   className="bg-[#FF8604] text-white font-bold py-2 px-4 rounded-full hover:bg-yellow-600 transition-colors"
@@ -97,65 +104,85 @@ const Home = () => {
         </div>
       </div>
 
-     
       <div>
-        <Link className="bg-[#FF8604] text-white font-bold py-2 px-4 rounded-full hover:bg-yellow-600 transition-colors" to="/visas">See all visas</Link>
+        <Link
+          className="bg-[#FF8604] text-white font-bold py-2 px-4 rounded-full hover:bg-yellow-600 transition-colors"
+          to="/visas"
+        >
+          See all visas
+        </Link>
       </div>
 
-
-
-    
-      <div className="w-full bg-[#FF8604] text-white py-12 px-8">
-        <h2 className="text-4xl font-bold text-center mb-8">Why Choose Us?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center gap-4">
+      <div className="w-full bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 text-white py-12 px-8">
+        <h2 className="text-4xl font-extrabold text-center mb-12">
+          Why Choose Us?
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
             <img
-              src="https://i.ibb.co/ph6PK0H/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+              src="https://i.ibb.co/3cFnx4r/user-icon-feature1.png"
               alt="Feature 1"
-              className="w-20 h-20 rounded-full bg-white p-2"
+              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
             />
-            <h3 className="text-2xl font-semibold">Feature One</h3>
+            <h3 className="text-2xl font-semibold">Global Visa Access</h3>
             <p className="text-center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              We offer visa services for a wide range of countries, ensuring
+              that your travel plans are covered.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
             <img
-              src="https://i.ibb.co/ph6PK0H/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+              src="https://i.ibb.co/Bz3hC1p/user-icon-feature2.png"
               alt="Feature 2"
-              className="w-20 h-20 rounded-full bg-white p-2"
+              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
             />
-            <h3 className="text-2xl font-semibold">Feature Two</h3>
+            <h3 className="text-2xl font-semibold">Easy Application Process</h3>
             <p className="text-center">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Applying for a visa is simple and fast with our intuitive
+              platform, making your journey hassle-free.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
             <img
-              src="https://i.ibb.co/ph6PK0H/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+              src="https://i.ibb.co/ZMmqg7D/user-icon-feature3.png"
               alt="Feature 3"
-              className="w-20 h-20 rounded-full bg-white p-2"
+              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
             />
-            <h3 className="text-2xl font-semibold">Feature Three</h3>
+            <h3 className="text-2xl font-semibold">24/7 Support</h3>
             <p className="text-center">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Our dedicated support team is available around the clock to assist
+              you with your visa inquiries.
             </p>
           </div>
         </div>
       </div>
 
-
-      <div className="w-full bg-white py-12 px-8">
-        <h2 className="text-4xl font-bold text-center text-[#FF8604] mb-8">Join Us Today!</h2>
-        <p className="text-center text-gray-700 mb-8">
-          Discover a world of opportunities with our platform. Sign up now and start your journey with us.
-        </p>
-        <div className="flex justify-center">
-          <button className="bg-[#FF8604] hover:bg-[#e77603] text-white py-3 px-6 rounded-lg text-lg font-semibold">
-            Get Started
-          </button>
+      {/* 2. Call to Action */}
+      <div className="w-full bg-[#FF8604] text-white py-16 px-8 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-60"
+          style={{
+            backgroundImage:
+              'url("https://i.ibb.co/7yJ27wx/Leonardo-Phoenix-A-stunning-cover-photo-featuring-a-sleek-silv-2.jpg")',
+          }}
+        ></div>
+        <div className="relative z-10 text-center">
+          <h2 className="text-4xl font-extrabold mb-4">Ready to Travel?</h2>
+          <p className="text-lg mb-8">
+            Join thousands of satisfied travelers who’ve trusted us for their
+            visa needs. Get started today and embark on your adventure.
+          </p>
+          <div className="flex justify-center">
+            <Link
+              to="/"
+              className="bg-white text-black font-bold py-3 px-8 rounded-full text-lg hover:bg-[#e77603] transition-colors duration-300"
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
       </div>
+
     </div>
   );
 };
