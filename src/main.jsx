@@ -56,13 +56,14 @@ const router = createBrowserRouter([
       },
       
       {
-        path: "visa-details",
+        path: "visa-details/:id",
         element: (
           <PrivateRoute>
             <VisaDetails />
           </PrivateRoute>
         ),
-      },
+      }
+      ,
       {
         path: "footer",
         element: <Footer />,
