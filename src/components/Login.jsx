@@ -53,7 +53,7 @@ const Login = () => {
         },
       });
 
-      navigate("/start-learning");
+      navigate("/visas");
     } catch (error) {
       setError(error.message);
       toast.error(`Login failed: ${error.message}`, {
