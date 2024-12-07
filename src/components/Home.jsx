@@ -61,14 +61,14 @@ const Home = () => {
       </div>
 
       <div className="container mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <h1 className="text-4xl font-bold text-center mb-8 text-[#FF8604]">
           All Visas
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {visas.map((visa) => (
             <div
               key={visa._id}
-              className="visa-card max-w-sm rounded overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow"
+              className="border  visa-card max-w-sm rounded overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow"
             >
               <img
                 src={visa.countryImage}
