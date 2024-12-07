@@ -113,49 +113,48 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className="w-full bg-gradient-to-r from-teal-500 via-green-500 to-blue-500 text-white py-12 px-8">
-        <h2 className="text-4xl font-extrabold text-center mb-12">
-          Why Choose Us?
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
-            <img
-              src="https://i.ibb.co/3cFnx4r/user-icon-feature1.png"
-              alt="Feature 1"
-              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
-            />
-            <h3 className="text-2xl font-semibold">Global Visa Access</h3>
-            <p className="text-center">
-              We offer visa services for a wide range of countries, ensuring
-              that your travel plans are covered.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
-            <img
-              src="https://i.ibb.co/Bz3hC1p/user-icon-feature2.png"
-              alt="Feature 2"
-              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
-            />
-            <h3 className="text-2xl font-semibold">Easy Application Process</h3>
-            <p className="text-center">
-              Applying for a visa is simple and fast with our intuitive
-              platform, making your journey hassle-free.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
-            <img
-              src="https://i.ibb.co/ZMmqg7D/user-icon-feature3.png"
-              alt="Feature 3"
-              className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-xl"
-            />
-            <h3 className="text-2xl font-semibold">24/7 Support</h3>
-            <p className="text-center">
-              Our dedicated support team is available around the clock to assist
-              you with your visa inquiries.
-            </p>
-          </div>
-        </div>
-      </div>
+ {/* 1. Feature Showcase with Gradient Background */}
+<div className="w-full bg-gradient-to-r from-[#FF8604] via-[#FF7A00] to-[#FF9B4D] text-white py-12 px-8 rounded-lg shadow-lg">
+  <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-100">Why Choose Us?</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+    <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
+      <img
+        src="https://i.ibb.co/3cFnx4r/user-icon-feature1.png"
+        alt="Feature 1"
+        className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-2xl hover:shadow-lg transition-shadow duration-300"
+      />
+      <h3 className="text-2xl font-semibold">Global Visa Access</h3>
+      <p className="text-center text-gray-200">
+        We offer visa services for a wide range of countries, ensuring that your travel plans are covered.
+      </p>
+    </div>
+    <div className="flex flex-col items-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
+      <img
+        src="https://i.ibb.co/Bz3hC1p/user-icon-feature2.png"
+        alt="Feature 2"
+        className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-2xl hover:shadow-lg transition-shadow duration-300"
+      />
+      <h3 className="text-2xl font-semibold">Easy Application Process</h3>
+      <p className="text-center text-gray-200">
+        Applying for a visa is simple and fast with our intuitive platform, making your journey hassle-free.
+      </p>
+    </div>
+    <div className="flex flex-col items-center justify-center gap-6 transition-transform transform hover:scale-105 duration-500 ease-in-out">
+      <img
+        src="https://i.ibb.co/ZMmqg7D/user-icon-feature3.png"
+        alt="Feature 3"
+        className="w-24 h-24 rounded-full border-4 border-white p-4 shadow-2xl hover:shadow-lg transition-shadow duration-300"
+      />
+      <h3 className="text-2xl font-semibold text-center">24/7 Support</h3>
+      <p className="text-center text-gray-200">
+        Our dedicated support team is available around the clock to assist you with your visa inquiries.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
 
       {/* 2. Call to Action */}
       <div className="w-full bg-[#FF8604] text-white py-16 px-8 relative overflow-hidden">
