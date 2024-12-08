@@ -63,7 +63,8 @@ const MyVisaApplications = () => {
                   <p className="text-gray-600">Validity: {application.validity}</p>
                   <p className="text-gray-600">Application Method: {application.applicationMethod}</p> 
                   <p className="text-gray-600">Applied Date: {new Date(application.appliedDate).toLocaleDateString()}</p> 
-                  <p className="text-gray-600">Name: {application.applicantFirstName} {application.applicantLastName}</p> 
+                  <p className="text-gray-600">Name: {application.applicantFirstName} {application.applicantLastName}</p>
+ 
                   <p className="text-gray-600">Email: {application.applicantEmail}</p> 
                   <button
                     onClick={() => handleCancelApplication(application._id)}
