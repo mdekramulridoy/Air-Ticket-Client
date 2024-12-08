@@ -34,4 +34,6 @@ dist/
 
 # Node modules
 node_modules/
+#tooltip&data
+/public/lottie-animation.json
 

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";  
+import "react-toastify/dist/ReactToastify.css"; 
 
 const AddVisa = () => {
   const [formData, setFormData] = useState({
     countryImage: "",
     country: "",
     visaType: "Tourist visa",
-    processingTime: "", 
+    processingTime: "",
     requiredDocuments: [],
     description: "",
     ageRestriction: "",
@@ -45,10 +46,7 @@ const AddVisa = () => {
       applicationMethod,
     } = formData;
   
-  
     const documents = requiredDocuments.length > 0 ? requiredDocuments : [];
-  
-  
     const age = ageRestriction ? parseInt(ageRestriction) : 0;
     const visaFee = fee ? parseFloat(fee) : 0;
   
@@ -76,21 +74,13 @@ const AddVisa = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        Swal.fire({
-          title: "Success!",
-          text: "Visa added successfully!",
-          icon: "success",
-          confirmButtonText: "OK",
-        });
+
+        toast.success("Visa added successfully!");
       })
       .catch((error) => {
         console.error("Error adding visa:", error);
-        Swal.fire({
-          title: "Error",
-          text: "There was an error adding the visa.",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
+
+        toast.error("There was an error adding the visa.");
       });
   };
 
@@ -108,7 +98,7 @@ const AddVisa = () => {
             name="countryImage"
             value={formData.countryImage}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
@@ -123,7 +113,7 @@ const AddVisa = () => {
             name="country"
             value={formData.country}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
@@ -137,7 +127,7 @@ const AddVisa = () => {
             name="visaType"
             value={formData.visaType}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           >
             <option value="Tourist visa">Tourist visa</option>
@@ -147,20 +137,19 @@ const AddVisa = () => {
         </div>
 
         <div>
-  <label htmlFor="processingTime" className="block text-lg font-medium">
-    Processing Time (Select Date)
-  </label>
-  <input
-    type="date"
-    id="processingTime"
-    name="processingTime"
-    value={formData.processingTime}
-    onChange={handleChange}
-    className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-    required
-  />
-</div>
-
+          <label htmlFor="processingTime" className="block text-lg font-medium">
+            Processing Time (Select Date)
+          </label>
+          <input
+            type="date"
+            id="processingTime"
+            name="processingTime"
+            value={formData.processingTime}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
 
         <div>
           <label className="block text-lg font-medium">Required Documents</label>
@@ -204,7 +193,7 @@ const AddVisa = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-black focus:ring-blue-500"
             required
           />
         </div>
@@ -219,7 +208,7 @@ const AddVisa = () => {
             name="ageRestriction"
             value={formData.ageRestriction}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
@@ -234,7 +223,7 @@ const AddVisa = () => {
             name="fee"
             value={formData.fee}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-black focus:ring-blue-500"
             required
           />
         </div>
@@ -249,7 +238,7 @@ const AddVisa = () => {
             name="validity"
             value={formData.validity}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 text-black focus:ring-blue-500"
             required
           />
         </div>
@@ -282,11 +271,13 @@ const AddVisa = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-3 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-white text-black font-bold p-3 rounded-md mt-4 hover:bg-[#ff7300] focus:outline-none focus:ring-2 focus:ring-blue-500 border"
         >
           Add Visa
         </button>
       </form>
+
+      <ToastContainer />
     </div>
   );
 };

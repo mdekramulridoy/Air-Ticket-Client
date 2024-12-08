@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyAddedVisa = () => {
   const [visas, setVisas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedVisa, setSelectedVisa] = useState(null); 
-  const [showModal, setShowModal] = useState(false); 
-
+  const [selectedVisa, setSelectedVisa] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/visas") 
+    fetch("http://localhost:5000/visas")
       .then((response) => response.json())
       .then((data) => {
         setVisas(data);
@@ -19,7 +20,6 @@ const MyAddedVisa = () => {
         setLoading(false);
       });
   }, []);
-
 
   const handleUpdate = (updatedVisa) => {
     fetch(`http://localhost:5000/visas/${updatedVisa._id}`, {
@@ -36,11 +36,14 @@ const MyAddedVisa = () => {
             visa._id === updatedVisa._id ? updatedVisa : visa
           )
         );
-        setShowModal(false); 
+        setShowModal(false);
+        toast.success("Visa updated successfully!");  // Success toast for update
       })
-      .catch((error) => console.error("Error updating visa:", error));
+      .catch((error) => {
+        console.error("Error updating visa:", error);
+        toast.error("Error updating visa!");  // Error toast if update fails
+      });
   };
-
 
   const handleDelete = (visaId) => {
     fetch(`http://localhost:5000/visas/${visaId}`, {
@@ -48,15 +51,18 @@ const MyAddedVisa = () => {
     })
       .then(() => {
         setVisas((prevVisas) => prevVisas.filter((visa) => visa._id !== visaId));
+        toast.success("Visa deleted successfully!"); // Success toast for delete
       })
-      .catch((error) => console.error("Error deleting visa:", error));
+      .catch((error) => {
+        console.error("Error deleting visa:", error);
+        toast.error("Error deleting visa!"); // Error toast if delete fails
+      });
   };
 
   const openModal = (visa) => {
     setSelectedVisa(visa);
     setShowModal(true);
   };
-
 
   const closeModal = () => {
     setSelectedVisa(null);
@@ -93,13 +99,13 @@ const MyAddedVisa = () => {
             <p>Application Method: {visa.application_method}</p>
             <div className="flex justify-between mt-4">
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-[#ff7300] hover:bg-[#FF8C2B] border text-white px-4 py-2 rounded"
                 onClick={() => openModal(visa)}
               >
                 Update
               </button>
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
                 onClick={() => handleDelete(visa._id)}
               >
                 Delete
@@ -109,10 +115,9 @@ const MyAddedVisa = () => {
         ))}
       </div>
 
- 
       {showModal && selectedVisa && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+        <div className="fixed inset-0 bg-black text-bl bg-opacity-50 flex justify-center items-center">
+          <div className="bg-black p-6 rounded-lg shadow-lg w-96">
             <h2 className="text-2xl font-bold mb-4">Update Visa</h2>
             <form
               onSubmit={(e) => {
@@ -128,7 +133,7 @@ const MyAddedVisa = () => {
                   onChange={(e) =>
                     setSelectedVisa({ ...selectedVisa, country: e.target.value })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border p-2 text-black rounded"
                 />
               </label>
               <label className="block mb-2">
@@ -142,7 +147,7 @@ const MyAddedVisa = () => {
                       visa_type: e.target.value,
                     })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border p-2 text-black rounded"
                 />
               </label>
               <label className="block mb-2">
@@ -153,7 +158,7 @@ const MyAddedVisa = () => {
                   onChange={(e) =>
                     setSelectedVisa({ ...selectedVisa, fee: e.target.value })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border text-black p-2 rounded"
                 />
               </label>
               <label className="block mb-2">
@@ -167,7 +172,7 @@ const MyAddedVisa = () => {
                       processing_time: e.target.value,
                     })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border text-black p-2 rounded"
                 />
               </label>
               <label className="block mb-2">
@@ -181,7 +186,7 @@ const MyAddedVisa = () => {
                       validity: e.target.value,
                     })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border text-black p-2 rounded"
                 />
               </label>
               <label className="block mb-2">
@@ -195,7 +200,7 @@ const MyAddedVisa = () => {
                       application_method: e.target.value,
                     })
                   }
-                  className="w-full border p-2 rounded"
+                  className="w-full border text-black p-2 rounded"
                 />
               </label>
               <div className="flex justify-between mt-4">
@@ -208,7 +213,7 @@ const MyAddedVisa = () => {
                 </button>
                 <button
                   type="submit"
-                  className="bg-green-500 text-white px-4 py-2 rounded"
+                  className="bg-[#FF8C2B] text-white px-4 py-2 rounded"
                 >
                   Save
                 </button>
@@ -217,6 +222,9 @@ const MyAddedVisa = () => {
           </div>
         </div>
       )}
+
+      {/* ToastContainer for showing notifications */}
+      <ToastContainer />
     </div>
   );
 };

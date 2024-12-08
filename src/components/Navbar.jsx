@@ -61,7 +61,7 @@ const Navbar = () => {
 
   return (
     <div className="pb-2">
-      <div className="navbar bg-base-100 shadow-md">
+      <div className="navbar bg-base-100">
   <div className="navbar-start">
     <div className="dropdown">
       <button
@@ -94,8 +94,8 @@ const Navbar = () => {
     <Link to="/" className="flex items-center gap-2">
       <img
         className="lg:w-12 md:w-10 w-8"
-        src="https://i.ibb.co/Y3C8QyZ/Logo.png"
-        alt="Lingo Bingo Logo"
+        src="https://i.ibb.co.com/y0drfXS/logo-new.png"
+        alt="visa logo"
       />
     </Link>
   </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+          className="px-3 py-2 rounded-md text-black transition-all duration-300  border hover:text-white hover:bg-[#FF8604]"
         >
           Home
         </NavLink>
@@ -112,7 +112,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/visas"
-          className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+          className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
         >
           All Visas
         </NavLink>
@@ -122,7 +122,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/login"
-              className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+              className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
             >
               Login
             </NavLink>
@@ -130,7 +130,7 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/register"
-              className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+              className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
             >
               SignUp
             </NavLink>
@@ -141,19 +141,19 @@ const Navbar = () => {
         <li className="flex flex-row gap-2">
           <NavLink
             to="/add-visa"
-            className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+            className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
           >
             Add visa
           </NavLink>
           <NavLink
             to="/my-added-visas"
-            className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+            className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
           >
             My Added Visas
           </NavLink>
           <NavLink
             to="/my-visa-applications"
-            className="px-3 py-2 rounded-md transition-all duration-300 text-white border hover:text-white hover:bg-[#FF8604]"
+            className="px-3 py-2 rounded-md transition-all duration-300 text-black border hover:text-white hover:bg-[#FF8604]"
           >
             My Visa Applications
           </NavLink>

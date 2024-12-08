@@ -40,12 +40,12 @@ const Visas = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-extrabold text-center mb-8 text-[#FF8604]">All Visas</h1>
+      <h1 className="text-4xl font-extrabold text-center mb-8 text-white">All Visas</h1>
       
      
       <div className="mb-6 flex justify-center">
         <select
-          className="select select-bordered w-1/4"
+          className="select text-black select-bordered w-1/4"
           value={visaTypeFilter}
           onChange={handleVisaTypeChange}
         >
