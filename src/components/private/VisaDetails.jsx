@@ -34,6 +34,8 @@ const VisaDetails = () => {
     const applicationData = {
       visaId: visa._id,
       userEmail: user.email, 
+      applicantFirstName: user.firstName,
+      applicantLastName: user.lastName,
       country: visa.country,
       visaType: visa.visa_type,
       fee: visa.fee,
