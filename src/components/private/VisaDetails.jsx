@@ -42,6 +42,8 @@ const VisaDetails = () => {
       status: "Applied",  
     };
 
+    console.log("Application Data:", applicationData); 
+
     fetch('http://localhost:5000/applications', {
       method: 'POST',
       headers: {
