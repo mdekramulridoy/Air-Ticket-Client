@@ -18,7 +18,7 @@ const MyVisaApplications = () => {
   const fetchApplications = async (userEmail) => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/applications?userEmail=${userEmail}`);
+      const response = await fetch(`https://air-ticket-server.vercel.app//applications?userEmail=${userEmail}`);
       const data = await response.json();
 
       if (Array.isArray(data)) {
@@ -37,7 +37,7 @@ const MyVisaApplications = () => {
 
   const handleCancelApplication = async (applicationId) => {
     try {
-      const response = await fetch(`http://localhost:5000/applications/${applicationId}`, {
+      const response = await fetch(`https://air-ticket-server.vercel.app//applications/${applicationId}`, {
         method: 'DELETE',
       });
 

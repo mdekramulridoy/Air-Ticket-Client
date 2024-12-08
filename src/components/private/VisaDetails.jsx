@@ -13,7 +13,7 @@ const VisaDetails = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/visas/${id}`)
+    fetch(`https://air-ticket-server.vercel.app//visas/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch visa details');
@@ -58,7 +58,7 @@ const VisaDetails = () => {
   
     console.log("Application Data to be Sent:", applicationData); 
   
-    fetch('http://localhost:5000/applications', {
+    fetch('https://air-ticket-server.vercel.app//applications', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

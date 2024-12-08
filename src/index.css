@@ -39,4 +39,25 @@ body.dark {
 .dark .text-gray-200 {
   color: #d1d5db !important; /* Light text color for dark mode */
 }
-
+/* Make sure the body takes the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Set the body to use flexbox */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Push content to take available space */
+  .main-content {
+    flex: 1;
+  }
+  
+  /* Footer should stay at the bottom */
+  footer {
+    margin-top: auto; /* This will push the footer to the bottom */
+  }
+  
