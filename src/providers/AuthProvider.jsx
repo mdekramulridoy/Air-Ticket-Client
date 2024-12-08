@@ -84,14 +84,20 @@ const AuthProvider = ({ children }) => {
         }
     };
 
-    const updateUserProfile = async (displayName, photoURL) => {
+    const updateUserProfile = async (firstName, lastName, photoURL) => {
         setLoading(true);
         try {
             await updateProfile(auth.currentUser, {
-                displayName,
+                displayName: `${firstName} ${lastName}`,
                 photoURL,
             });
-            setUser({ ...auth.currentUser, displayName, photoURL });
+            setUser({ 
+                ...auth.currentUser, 
+                firstName, 
+                lastName, 
+                displayName: `${firstName} ${lastName}`, 
+                photoURL 
+            });
         } catch (error) {
             console.error("Error updating profile:", error.message);
             throw error;
@@ -99,6 +105,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
+    
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
