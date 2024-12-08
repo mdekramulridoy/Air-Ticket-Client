@@ -7,7 +7,6 @@ import { Reveal } from "react-awesome-reveal";
 const Home = () => {
   const { user } = useContext(AuthContext);
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [visas, setVisas] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
@@ -32,16 +31,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [images]);
-
-  useEffect(() => {
-    fetch("https://air-ticket-server.vercel.app//visas")
+    fetch("https://air-ticket-server.vercel.app/visas")
       .then((response) => response.json())
       .then((data) => {
         const uniqueVisas = [
@@ -66,6 +56,20 @@ const Home = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
+  // Carousel logic for smooth sliding left to right
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextImage, 3000); 
+    return () => clearInterval(interval); 
+  }, []);
+
   return (
     <div className="flex flex-col items-center gap-8">
       <h2 className="text-4xl font-bold text-center mt-2 text-white">
@@ -80,7 +84,8 @@ const Home = () => {
         {isDarkMode ? "Light" : "Dark"} Theme
       </button>
 
-      <div className="relative w-full overflow-hidden rounded-lg">
+   
+      <div className="relative w-full h-96 rounded-lg overflow-hidden">
         <div
           className="flex transition-all duration-1000 ease-in-out"
           style={{
@@ -92,7 +97,7 @@ const Home = () => {
               key={index}
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full object-cover flex-shrink-0 aspect-[16/5]"
+              className="w-full h-full object-cover"
             />
           ))}
         </div>
@@ -154,6 +159,7 @@ const Home = () => {
           See all visas
         </Link>
       </div>
+
       {/* New Features Section */}
       <div className="bg-white py-16 w-full">
         <div className="container mx-auto text-center text-white">

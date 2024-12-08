@@ -65,7 +65,7 @@ const AddVisa = () => {
   
     console.log("Data being submitted:", dataToSubmit); 
   
-    fetch("https://air-ticket-server.vercel.app//visas/add", {
+    fetch("https://air-ticket-server.vercel.app/visas/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

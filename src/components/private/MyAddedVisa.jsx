@@ -9,7 +9,7 @@ const MyAddedVisa = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch("https://air-ticket-server.vercel.app//visas")
+    fetch("https://air-ticket-server.vercel.app/visas")
       .then((response) => response.json())
       .then((data) => {
         setVisas(data);
@@ -22,7 +22,7 @@ const MyAddedVisa = () => {
   }, []);
 
   const handleUpdate = (updatedVisa) => {
-    fetch(`https://air-ticket-server.vercel.app//visas/${updatedVisa._id}`, {
+    fetch(`https://air-ticket-server.vercel.app/visas/${updatedVisa._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const MyAddedVisa = () => {
   };
 
   const handleDelete = (visaId) => {
-    fetch(`https://air-ticket-server.vercel.app//visas/${visaId}`, {
+    fetch(`https://air-ticket-server.vercel.app/visas/${visaId}`, {
       method: "DELETE",
     })
       .then(() => {

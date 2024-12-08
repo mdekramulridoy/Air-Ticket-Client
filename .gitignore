@@ -37,3 +37,5 @@ node_modules/
 #tooltip&data
 /public/lottie-animation.json
 
+
+.vercel

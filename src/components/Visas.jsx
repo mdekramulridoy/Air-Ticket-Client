@@ -7,7 +7,7 @@ const Visas = () => {
   const [visaTypeFilter, setVisaTypeFilter] = useState(''); 
 
   useEffect(() => {
-    fetch('https://air-ticket-server.vercel.app//visas')
+    fetch('https://air-ticket-server.vercel.app/visas')
       .then((response) => response.json())
       .then((data) => {
         const uniqueVisas = [
