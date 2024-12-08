@@ -165,13 +165,14 @@ const Navbar = () => {
     {user ? (
       <div className="relative group">
         <img
-          src={
-            user.photoURL ||
-            "https://i.ibb.co/ph6PK0H/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
-          }
-          alt="User Avatar"
-          className="w-8 h-8 rounded-full cursor-pointer"
-        />
+  src={
+    user.photoURL ||
+    "https://i.ibb.co/ph6PK0H/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+  }
+  alt="User Avatar"
+  className="w-8 h-8 rounded-full cursor-pointer"
+/>
+
         <div className="absolute right-0 hidden group-hover:flex flex-col bg-white border border-gray-300 shadow-lg p-2 rounded-lg w-40 z-50">
           <span className="font-bold text-[#FF8604]">
             {user.displayName || "User"}

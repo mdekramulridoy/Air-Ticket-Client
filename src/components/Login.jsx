@@ -68,9 +68,17 @@ const Login = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle();
+      const result = await signInWithGoogle();
+      const user = result.user;
+  
+ 
+      if (!user.photoURL) {
+        const userRef = auth.currentUser;
+        await userRef.reload(); 
+      }
+  
       setError("");
-
+  
       toast.success("Login successful! Welcome back.", {
         duration: 4000,
         style: {
@@ -78,7 +86,7 @@ const Login = () => {
           color: "#fff",
         },
       });
-
+  
       navigate("/add-visa");
     } catch (error) {
       setError(error.message);
@@ -159,7 +167,7 @@ const Login = () => {
           <div className="mb-4 flex justify-center">
             <button
               onClick={handleGoogleSignIn}
-              className="btn bg-white hover:bg-slate-400 text-green-500 font-bold text-lg flex gap-3  border-2"
+              className="btn bg-white hover:bg-slate-400 text-green-500 font-bold text-lg flex gap-3 border-2"
             >
               <FaGoogle className="border-green-500"></FaGoogle>
               <h1 className="text-black">Sign In With Google</h1>

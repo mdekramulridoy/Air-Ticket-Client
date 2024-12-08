@@ -8,7 +8,9 @@ const VisaDetails = () => {
   const { id } = useParams(); 
   const [visa, setVisa] = useState(null);
   const [error, setError] = useState(null);
-  const { user } = useContext(AuthContext); 
+  const { user, loading } = useContext(AuthContext);  
+
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/visas/${id}`)
@@ -26,24 +28,36 @@ const VisaDetails = () => {
   }, [id]);
 
   const handleApply = () => {
-    if (!user) {
-      toast.error("Please log in to apply.");  
+    if (loading) {
+      toast.error("Please wait while we fetch your data...");
       return;
     }
-
+  
+    if (!user) {
+      toast.error("Please log in to apply.");
+      return;
+    }
+  
+   
+    const nameParts = user.displayName ? user.displayName.split(" ") : [];
+    const applicantFirstName = nameParts[0] || ''; 
+    const applicantLastName = nameParts[1] || '';  
+  
     const applicationData = {
       visaId: visa._id,
-      userEmail: user.email, 
-      applicantFirstName: user.firstName, // Ensure this is passed correctly
-      applicantLastName: user.lastName, // Ensure this is passed correctly
+      userEmail: user.email,
+      applicantFirstName,
+      applicantLastName,
       country: visa.country,
       visaType: visa.visa_type,
       fee: visa.fee,
-      status: "Applied",  
+      status: "Applied",
+      appliedDate: new Date().toISOString(),
     };
-
-    console.log("Application Data:", applicationData); 
-
+    
+  
+    console.log("Application Data to be Sent:", applicationData); 
+  
     fetch('http://localhost:5000/applications', {
       method: 'POST',
       headers: {
@@ -51,19 +65,25 @@ const VisaDetails = () => {
       },
       body: JSON.stringify(applicationData),
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          toast.success("Application submitted successfully!");  
-        } else {
-          toast.error("Failed to submit application.");  
-        }
-      })
-      .catch(error => {
-        console.error("Error applying for visa:", error);
-        toast.error("Error applying for visa.");  
-      });
-};
+    .then(response => response.json())
+    .then(data => {
+      console.log("Backend Response:", data); 
+      if (data.success) {
+        toast.success("Application submitted successfully!");  
+      } else {
+        toast.error("Failed to submit application.");  
+      }
+    })
+    .catch(error => {
+      console.error("Error applying for visa:", error);
+      toast.error("Error applying for visa.");  
+    });
+  };
+  
+  
+  
+  
+
 
 
   if (error) {
@@ -93,7 +113,29 @@ const VisaDetails = () => {
           </div>
 
           <div className="space-y-4">
+
+            {/* Displaying User Info */}
+          {user && (
+            <div className="space-y-4 mt-6">
+              <div className="flex justify-between">
+                <span className="font-semibold text-gray-700">Applicant Name:</span>
+                <span className="text-gray-600">{user.displayName}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-semibold text-gray-700">Applicant Email:</span>
+                <span className="text-gray-600">{user.email}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-semibold text-gray-700">Applied Date:</span>
+                <span className="text-gray-600">{new Date().toLocaleDateString()}</span>
+              </div>
+            </div>
+          )}
             <div className="flex justify-between">
+              
+
+
+
               <span className="font-semibold text-gray-700">Processing Time:</span>
               <span className="text-gray-600">{visa.processing_time}</span>
             </div>
@@ -110,6 +152,8 @@ const VisaDetails = () => {
               <span className="text-gray-600">{visa.application_method}</span>
             </div>
           </div>
+
+          
 
           <div className="mt-6 text-center">
             <button
