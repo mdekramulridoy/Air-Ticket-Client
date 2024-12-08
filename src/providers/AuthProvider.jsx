@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             const createdUser = result.user;
             await updateProfile(createdUser, {
-                displayName: `${firstName} ${lastName}`, // You can combine firstName and lastName for displayName
+                displayName: `${firstName} ${lastName}`, // Use firstName and lastName as displayName
                 photoURL: photoURL,
             });
             setUser({ 
@@ -41,7 +41,6 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
-    
 
     const signInUser = async (email, password) => {
         setLoading(true);
@@ -105,7 +104,6 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
-    
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -114,7 +112,6 @@ const AuthProvider = ({ children }) => {
         });
         return () => unsubscribe();
     }, []);
-
 
     const authInfo = {
         user,

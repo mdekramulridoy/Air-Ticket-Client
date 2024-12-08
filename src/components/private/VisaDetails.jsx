@@ -30,18 +30,18 @@ const VisaDetails = () => {
       toast.error("Please log in to apply.");  
       return;
     }
-  
+
     const applicationData = {
       visaId: visa._id,
       userEmail: user.email, 
-      applicantFirstName: user.firstName,
-      applicantLastName: user.lastName,
+      applicantFirstName: user.firstName, // Ensure this is passed correctly
+      applicantLastName: user.lastName, // Ensure this is passed correctly
       country: visa.country,
       visaType: visa.visa_type,
       fee: visa.fee,
       status: "Applied",  
     };
-  
+
     fetch('http://localhost:5000/applications', {
       method: 'POST',
       headers: {
@@ -61,7 +61,8 @@ const VisaDetails = () => {
         console.error("Error applying for visa:", error);
         toast.error("Error applying for visa.");  
       });
-  };
+};
+
 
   if (error) {
     return <div className="text-red-500 text-center">{error}</div>;
