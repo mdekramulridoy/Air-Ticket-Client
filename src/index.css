@@ -61,3 +61,19 @@ html, body {
     margin-top: auto; /* This will push the footer to the bottom */
   }
   
+  /* CSS for Fade In */
+.fadeInUp {
+    animation: fadeInUp 1.2s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
