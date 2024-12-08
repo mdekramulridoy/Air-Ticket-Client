@@ -2,6 +2,31 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Error Boundary to catch any unexpected errors
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null, info: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, info) {
+    this.setState({ info });
+    console.error("Error caught by ErrorBoundary:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h2>Something went wrong. Please try again later.</h2>;
+    }
+
+    return this.props.children;
+  }
+}
+
 const MyAddedVisa = () => {
   const [visas, setVisas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,11 +37,17 @@ const MyAddedVisa = () => {
     fetch("https://air-ticket-server.vercel.app/visas")
       .then((response) => response.json())
       .then((data) => {
-        setVisas(data);
+        if (Array.isArray(data)) {
+          setVisas(data); // Set visas only if the response is an array
+        } else {
+          console.error("Expected an array, but received:", data);
+          setVisas([]); // Set visas as an empty array in case of unexpected data
+        }
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching visas:", error);
+        setVisas([]); // If there's an error, set visas as an empty array
         setLoading(false);
       });
   }, []);
@@ -73,7 +104,7 @@ const MyAddedVisa = () => {
     return <div>Loading...</div>;
   }
 
-  if (visas.length === 0) {
+  if (!Array.isArray(visas) || visas.length === 0) {
     return <div>No visas added yet.</div>;
   }
 
@@ -229,4 +260,11 @@ const MyAddedVisa = () => {
   );
 };
 
-export default MyAddedVisa;
+// Wrap the MyAddedVisa component in the ErrorBoundary
+const MyAddedVisaWithErrorBoundary = () => (
+  <ErrorBoundary>
+    <MyAddedVisa />
+  </ErrorBoundary>
+);
+
+export default MyAddedVisaWithErrorBoundary;
