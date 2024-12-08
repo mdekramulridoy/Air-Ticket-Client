@@ -83,7 +83,7 @@ const Register = () => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign Up now!</h1>
+          <h1 className="text-5xl font-bold text-[#FF7E01]">Sign Up now!</h1>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleRegister} className="card-body">
@@ -95,7 +95,7 @@ const Register = () => {
                 name="name"
                 type="text"
                 placeholder="Your Name"
-                className="input input-bordered"
+                className="input input-bordered text-black"
                 required
               />
             </div>
@@ -107,7 +107,7 @@ const Register = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                className="input input-bordered"
+                className="input input-bordered text-black"
                 required
               />
             </div>
@@ -120,7 +120,7 @@ const Register = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full text-black"
                   required
                 />
                 <span
@@ -139,14 +139,14 @@ const Register = () => {
                 name="photo"
                 type="text"
                 placeholder="Photo URL"
-                className="input input-bordered"
+                className="input input-bordered text-black"
               />
             </div>
 
             <div className="form-control flex flex-col  items-center space-y-2 md:space-y-0 md:space-x-4">
               <label className="label flex items-center">
                 <input name="terms" type="checkbox" className="mr-2" />
-                <span className="text-sm">
+                <span className="text-black text-sm">
                   I agree to the{" "}
                   <Link
                     to="/terms"
@@ -167,7 +167,7 @@ const Register = () => {
             </div>
 
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary bg-[#FF7E01]">
                 Sign Up
               </button>
             </div>

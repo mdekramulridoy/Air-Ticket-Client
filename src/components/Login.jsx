@@ -104,7 +104,7 @@ const Login = () => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold text-[#FF7E01]">Login now!</h1>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleLogin} className="card-body">
@@ -117,7 +117,7 @@ const Login = () => {
                 type="email"
                 ref={emailRef}
                 placeholder="email"
-                className="input input-bordered"
+                className="input text-black input-bordered"
                 required
               />
             </div>
@@ -129,7 +129,7 @@ const Login = () => {
                 name="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="input input-bordered"
+                className="input text-black input-bordered"
                 required
               />
               <label className="label">
@@ -154,7 +154,7 @@ const Login = () => {
             </div>
           </form>
           {error && <p className="text-center mb-2 text-red-600">{error}</p>}
-          <p className="mb-4 text-center">
+          <p className="mb-4 text-center text-black">
             No Account ? Please{" "}
             <Link
               className="font-bold text-red-600 hover:underline"
@@ -167,7 +167,7 @@ const Login = () => {
           <div className="mb-4 flex justify-center">
             <button
               onClick={handleGoogleSignIn}
-              className="btn bg-white hover:bg-slate-400 text-green-500 font-bold text-lg flex gap-3 border-2"
+              className="btn bg-white hover:bg-[#FF7E01] text-green-500 font-bold text-lg flex gap-3 border-2"
             >
               <FaGoogle className="border-green-500"></FaGoogle>
               <h1 className="text-black">Sign In With Google</h1>
