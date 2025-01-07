@@ -62,7 +62,7 @@ const Visas = () => {
         {filteredVisas.map((visa) => (
           <div
             key={visa._id}
-            className="visa-card max-w-sm rounded-lg overflow-hidden shadow-lg bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 transform hover:scale-105 transition-transform duration-300"
+            className="visa-card max-w-sm rounded-lg overflow-hidden shadow-lg bg-[#19709f] transform hover:scale-105 transition-transform duration-300"
           >
             <img
               src={visa.countryImage}

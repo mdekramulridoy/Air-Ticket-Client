@@ -16,6 +16,7 @@ import { Toaster } from "react-hot-toast";
 import NotFound from "./components/NotFound";
 import MyVisaApplication from "./components/private/MyVisaApplication";
 import VisaDetails from "./components/private/VisaDetails";
+import About from "./components/About";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound></NotFound>, 
+      },
+      {
+        path: "about",
+        element: <About></About>, 
       },
       {
         path: "my-visa-applications",

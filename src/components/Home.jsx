@@ -4,6 +4,9 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Reveal } from "react-reveal";
 
+// Import Slider
+import Slider from "./Slider"; // Slider component import করা হয়েছে।
+
 const Home = () => {
   const { user } = useContext(AuthContext);
 
@@ -13,12 +16,6 @@ const Home = () => {
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const images = [
-    "https://i.ibb.co/7yJ27wx/Leonardo-Phoenix-A-stunning-cover-photo-featuring-a-sleek-silv-2.jpg",
-    "https://i.ibb.co/5cbYXBJ/Leonardo-Phoenix-A-sleek-commercial-airliner-soaring-through-a-1.jpg",
-    "https://i.ibb.co/7RHyrcb/Leonardo-Phoenix-A-stunning-cover-photo-featuring-a-sleek-silv-1.jpg",
-  ];
 
   const [text] = useTypewriter({
     words: ["Welcome to Free Visa"],
@@ -63,21 +60,10 @@ const Home = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextImage, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="flex flex-col items-center gap-8">
+      <Slider />
+
       <h2 className="text-4xl font-bold text-center mt-2 text-white">
         {text}
         <Cursor cursorColor="black" />
@@ -87,29 +73,19 @@ const Home = () => {
         onClick={toggleTheme}
         className="text-red-400 p-2 border rounded-lg bg-white dark:bg-gray-800 dark:text-white"
       >
-        {isDarkMode ? "Light" : "Dark"} In Card
+        {isDarkMode ? "Light" : "Dark"} Mode
       </button>
-
-      {/* Carousel */}
-      <div className="relative w-full h-96 rounded-lg overflow-hidden">
-        <img
-          src={images[currentImageIndex]}
-          alt={`Slide ${currentImageIndex + 1}`}
-          className="w-full h-full object-contain"
-        />
-      </div>
 
       <div className="container mx-auto p-4">
         <h1 className="text-4xl font-bold text-center mb-8 text-white">
           All Visas
         </h1>
 
-        {/* Loading and Error Handling */}
         {loading && <div className="text-white text-xl">Loading...</div>}
         {error && <div className="text-white text-xl">{error}</div>}
 
         {!loading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {visas.map((visa) => (
               <div
                 key={visa._id}
@@ -163,66 +139,157 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* New Contact Section */}
-      <div className="bg-[#FF8604] py-16 w-full">
-        <div className="container mx-auto text-center">
-          <Reveal effect="fadeInUp" duration={1200}>
-            <h2 className="text-3xl font-semibold mb-8 text-white">
-              Get in Touch
-            </h2>
-          </Reveal>
-          <p className="text-lg mb-8 text-white">
-            Have questions or need assistance? Contact us today!
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="contact-card p-6 bg-white rounded-lg shadow-xl">
-              <h3 className="text-xl font-semibold mb-4 text-[#FF8604]">Email</h3>
-              <p className="text-[#FF8604]">vut@petni.com</p>
-            </div>
-            <div className="contact-card p-6 bg-white rounded-lg shadow-xl">
-              <h3 className="text-xl font-semibold mb-4 text-[#FF8604]">Phone</h3>
-              <p className="text-[#FF8604]">+880 123456789</p>
-            </div>
-            <div className="contact-card p-6 bg-white rounded-lg shadow-xl">
-              <h3 className="text-xl font-semibold mb-4 text-[#FF8604]">Address</h3>
-              <p className="text-[#FF8604]">420 Vuter golli, Dhaka, Bangladesh</p>
-            </div>
-          </div>
 
-          {/* Contact Form */}
-          <div className="mt-12 p-8 bg-white shadow-xl rounded-lg">
-            <h3 className="text-2xl font-semibold mb-4 text-[#FF8604]">
-              Contact Form
+      {/* Add relevant section here  */}
+        {/* Highlighted/Top-Rated Campaign */}
+      <div className="container mx-auto p-4">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">
+          Top-Rated Campaigns
+        </h2>
+        <div className="flex justify-center gap-6">
+          {/* Example of Top Campaign */}
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              Best Visa Deals 2025
             </h3>
-            <form>
-              <div className="mb-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full text-black p-3 border rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full p-3 border text-black rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <textarea
-                  placeholder="Your Message"
-                  rows="4"
-                  className="w-full text-black p-3 border rounded-lg"
-                ></textarea>
-              </div>
-              <button className="bg-[#FF8604] text-white py-2 px-6 rounded-full">
-                Send Message
-              </button>
-            </form>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Get the best visa deals for 2025. Apply now and get exclusive offers!
+            </p>
+            <Link
+              to="about"
+              className="text-[#FF8604] hover:underline"
+            >
+              Learn More
+            </Link>
+          </div>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              Best Visa Deals 2026
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Get the best visa deals for 2026. Apply now and get exclusive offers!
+            </p>
+            <Link
+              to="about"
+              className="text-[#FF8604] hover:underline"
+            >
+              Learn More
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Categories Section */}
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">
+          Visa Categories
+        </h2>
+        <div className="flex justify-between gap-6">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              Student Visa
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Explore study visa options for top educational destinations.
+            </p>
+            <Link
+              to="visas"
+              className="text-[#FF8604] hover:underline"
+            >
+              Browse Student Visas
+            </Link>
+          </div>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              Tourist Visa
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Plan your dream vacation with the best tourist visa options.
+            </p>
+            <Link
+              to="visas"
+              className="text-[#FF8604] hover:underline"
+            >
+              Browse Tourist Visas
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Blog Section */}
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-semibold text-center text-white mb-6">
+          Latest Blogs
+        </h2>
+        <div className="flex justify-center gap-6">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              How to Apply for a BD Visa
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              A comprehensive guide to applying for a Bangladeshi visa and what to expect.
+            </p>
+            <Link
+              to="visa-details/677cd5f8f2492fd5facb3cf1"
+              className="text-[#FF8604] hover:underline"
+            >
+              Read Blog
+            </Link>
+          </div>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+              How to Apply for a US Visa
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              A comprehensive guide to applying for a US visa and what to expect.
+            </p>
+            <Link
+              to="visa-details/677cd5f8f2492fd5facb3ced"
+              className="text-[#FF8604] hover:underline"
+            >
+              Read Blog
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Promotions & Offers Section */}
+      <div className="container mx-auto p-4 bg-yellow-100 rounded-lg flex flex-col items-center">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+          Special Offers
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">
+          Don't miss out on our limited-time offers. Apply for visas and get amazing discounts!
+        </p>
+        <Link
+          to="/visas"
+          className="bg-[#FF8604] text-white font-bold py-2 px-4 rounded-full border hover:bg-yellow-600 transition-colors"
+        >
+          Explore Offers
+        </Link>
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="container mx-auto p-4 bg-gray-800 text-white rounded-lg">
+        <h2 className="text-3xl font-semibold text-center mb-6">
+          Subscribe to Our Newsletter
+        </h2>
+        <p className="text-center mb-4">
+          Stay updated with the latest visa news, offers, and travel guides!
+        </p>
+        <div className="flex justify-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="p-2 rounded-l-lg"
+          />
+          <button className="bg-[#FF8604] text-white p-2 rounded-r-lg">
+            Subscribe
+          </button>
+        </div>
+      </div>
+
+      {/* End here extra section */}
     </div>
   );
 };
