@@ -180,7 +180,7 @@ const Home = () => {
       </div>
 
       {/* Categories Section */}
-      <div className="container mx-auto">
+      <div className="container mx-auto p-4">
         <h2 className="text-3xl font-semibold text-center text-white mb-6">
           Visa Categories
         </h2>
@@ -217,7 +217,7 @@ const Home = () => {
       </div>
 
       {/* Blog Section */}
-      <div className="container mx-auto">
+      <div className="container mx-auto p-4">
         <h2 className="text-3xl font-semibold text-center text-white mb-6">
           Latest Blogs
         </h2>
@@ -254,11 +254,11 @@ const Home = () => {
       </div>
 
       {/* Promotions & Offers Section */}
-      <div className="container mx-auto p-4 bg-yellow-100 rounded-lg flex flex-col items-center">
+      <div className="container mx-auto p-10 bg-yellow-100 rounded-lg flex flex-col items-center">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
           Special Offers
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-black dark:text-black mb-4">
           Don't miss out on our limited-time offers. Apply for visas and get amazing discounts!
         </p>
         <Link

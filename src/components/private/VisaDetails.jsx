@@ -108,8 +108,8 @@ const VisaDetails = () => {
 
         <div className="p-6">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800">{visa.country} Visa</h2>
-            <p className="text-gray-600 mt-2">{visa.visa_type} Visa</p>
+            <h2 className="text-2xl font-semibold text-gray-800">{visa.country}</h2>
+            <p className="text-gray-600 mt-2">{visa.visa_type}</p>
           </div>
 
           <div className="space-y-4">
