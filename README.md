@@ -1,8 +1,8 @@
 # Air Ticket Booking Website
 
 [Live Site URL](https://air-ticket-client.web.app/)  
-[Client Repository](https://github.com/programming-hero-web-course2/b10-a10-client-side-mdekramulridoy)  
-[Server Repository](https://github.com/programming-hero-web-course2/b10-a10-server-side-mdekramulridoy)
+[Client Repository](https://github.com/mdekramulridoy/Air-Ticket-Client)  
+[Server Repository](https://github.com/mdekramulridoy/Air-Ticket-Server)
 
 ## About the Project
 
